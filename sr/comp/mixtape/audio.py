@@ -13,10 +13,5 @@ class AudioController:
         trim_start: float,
     ) -> 'subprocess.Popen[bytes]':
         print('Playing', filename)
-        args = ['sox', filename, '-t', self.audio_backend]
-        if output_device is not None:
-            args.append(output_device)
-        if trim_start != 0:
-            args += ['trim', str(trim_start)]
-
+        args = ['totem', filename]
         return subprocess.Popen(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
